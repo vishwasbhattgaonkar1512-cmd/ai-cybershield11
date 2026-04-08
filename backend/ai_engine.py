@@ -26,7 +26,6 @@ def get_ai_tips(password_score: int, is_email_leaked: bool, phishing_risk: bool)
         "Analyze the user's specific security vulnerabilities and provide exactly 3 actionable, practical tips. "
         "Rule 1: Format the output as a list using exactly 3 bullet points. "
         "Rule 2: You MUST use the '•' character for bullets. Do NOT use hyphens or numbers. "
-        "Rule 3: Keep it concise. No introductory or concluding text."
     )
 
     severity = "HIGH" if is_email_leaked or phishing_risk or password_score <= 1 else "LOW"
@@ -42,7 +41,7 @@ def get_ai_tips(password_score: int, is_email_leaked: bool, phishing_risk: bool)
     )
 
     payload = {
-        "model": "openai/gpt-4o-mini", # Upgraded to a better, cheaper, and faster model
+        "model": "anthropic/claude-3-haiku", # Upgraded to a better, cheaper, and faster model
         "messages":[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
